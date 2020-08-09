@@ -52,7 +52,7 @@
 
 // console.log(collectionItems);
 
-//Static Example
+///////Static Example//////////////////////////////////////////
 
 // const nodeItems = document.querySelectorAll(".item");
 // const todoList = document.querySelector("#todo-list");
@@ -74,7 +74,7 @@
 
 // console.log(nodeItems);
 
-//Query Select making it dynamic
+/////////Query Select making it dynamic///////////////////////
 
 const todoList = document.querySelector("#todo-list");
 const items = todoList.children;
