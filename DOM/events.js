@@ -3,19 +3,42 @@ const todoList = document.querySelector("#todo-list");
 const todoNr = document.querySelector(".todo-nr b");
 const items = todoList.children;
 const mainTitle = document.querySelector(".main-title");
+const nameInput = document.querySelector(".name-input");
 
 //Click, scroll, resizing the browser
 
 // //Attach a event listener
-// button.addEventListener("click", function () {
-//   const newItem = document.createElement("Li");
-//   newItem.classList.add("item");
-//   newItem.innerText = `Item ${items.length + 1}`;
-//   todoList.appendChild(newItem);
-//   todoNr.innerText = items.length;
-// });
+button.addEventListener("click", function (e) {
+  e.preventDefault();
+  //Create Element
+  const newItem = document.createElement("Li");
+  //Adding class
+  newItem.classList.add("item");
+  //Adding text to it
+  newItem.innerText = nameInput.value;
+  todoList.appendChild(newItem);
+  todoNr.innerText = items.length;
+  //Delete the value from the input
+  nameInput.value = "";
+  //Create the element and attaching the listener
+  newItem.addEventListener("click", deleteItem);
+});
 
-// todoNr.innerText = items.length;
+todoNr.innerText = items.length;
+
+// for (item of items) {
+//   item.addEventListener("click", deleteItem);
+// }
+
+function deleteItem(e) {
+  e.stopPropagation();
+  e.target.remove();
+  todoNr.innerText = items.length;
+}
+
+todoList.addEventListener("click", function () {
+  todoList.classList.toggle("fade");
+});
 
 ////////////////////////////////////////////////////////
 
@@ -46,9 +69,9 @@ const mainTitle = document.querySelector(".main-title");
 
 /////////////////////////////////////////////////////
 
-button.addEventListener("keydown", function (event) {
-  //Toggle to add/remove class when q key is pressed and held down
-  if (event.keyCode === 81) {
-    mainTitle.classList.toggle("spectacular");
-  }
-});
+// button.addEventListener("keydown", function (event) {
+//   //Toggle to add/remove class when q key is pressed and held down
+//   if (event.keyCode === 81) {
+//     mainTitle.classList.toggle("spectacular");
+//   }
+// });
