@@ -41,10 +41,21 @@ const videos = [
 
 const newVideos = videos.map(function (video) {
   //   return video.toUpperCase();
-  return video;
+  // return video;
+
+  //CAN DO THIS OR......
+
+  // if (video.length < 10) {
+  //   return video;
+  // } else {
+  //   return "nope";
+  // }
+
+  //CAN DO THIS.....
+  return video.length < 10 ? video : "nope";
 });
 
-newVideos.push("HEYYYYY!");
+// newVideos.push("HEYYYYY!");
 
 console.log("Videos: ", videos);
 console.log("New Videos: ", newVideos);
@@ -95,3 +106,89 @@ const someRating = games.some(function (game) {
 });
 
 console.log("Some Rating: ", someRating);
+
+/////////////////
+//ARROW FUNCTIONS
+////////////////
+
+//INSTEAD OF THIS.....
+const newVideos2 = videos.map(function (v) {
+  return v.length < 10 ? v : "nope";
+});
+
+console.log("New Videos: ", newVideos2);
+
+//CAN DO THIS....
+// const arrowVideos = videos.map((v2) => {
+//   return v2.length < 10 ? v2 : "nope";
+// });
+
+//OR THIS....
+const arrowVideos = videos.map((v2) => (v2.length < 10 ? v2 : "nope"));
+
+console.log("Arrow Videos: ", arrowVideos);
+
+// const arrowVideos2 = videos.map((v3) => v3 + "hey");
+const arrowVideos2 = videos.map((v3) => v3.toUpperCase());
+
+console.log("Arrow Videos2: ", arrowVideos2);
+
+/////////////////
+//SORT
+////////////////
+
+const items = ["Banana", "Orange", "Apple", "Mango"];
+const ratings = [92, 56, 4, 2, 22, 45.6, 10, 80];
+
+//If return is negative, a is sorted before b
+//If postive, b is sorted before a
+//If they are the same, or 0, then nothing happens
+// ratings.sort(function (a, b) {
+//   //ASC
+//   return a - b;
+//   //DESC
+//   // return b - a;
+// });
+
+//ARROW FUNCTION OF ABOVE
+// ratings.sort((a, b) => a - b);
+
+// console.log("RATINGS: ", ratings);
+
+// games.sort((a, b) => a.rating - b.rating);
+
+// console.log("GAME RATINGS: ", games);
+
+/////////////////
+//COPiES OF ARRAYS
+////////////////
+
+const descRatings = [...ratings];
+descRatings.sort((a, b) => b - a);
+
+const ascRatings = [...ratings];
+ascRatings.sort((a, b) => a - b);
+
+console.log("descRatings: ", descRatings);
+console.log("ascRatings: ", ascRatings);
+console.log("RATINGS: ", ratings);
+
+const name = "developedbyed";
+
+const letters = name.split("");
+console.log(letters);
+
+const names = ["David", "you"];
+const otherNames = ["John", "Bon", "Jovi"];
+
+//CAN DO THIS....
+
+// const allNames = names.concat(otherNames);
+// console.log(allNames);
+// console.log(names);
+
+//OR THIS...
+
+const allNames = [...names, ...otherNames];
+console.log(allNames);
+console.log(names);
